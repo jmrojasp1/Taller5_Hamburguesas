@@ -31,7 +31,7 @@ public class ProductoMenuTest {
     }
 
     @Test
-    void testGetCostoAdicional( )
+    void testPrecio( )
     {
         assertEquals( 18000, productoMenu1.getPrecio( ), "El costo del producto no es el esperado." );
     }
