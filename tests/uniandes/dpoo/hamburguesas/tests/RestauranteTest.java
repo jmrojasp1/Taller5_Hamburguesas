@@ -2,23 +2,9 @@ package uniandes.dpoo.hamburguesas.tests;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-
-import uniandes.dpoo.hamburguesas.excepciones.IngredienteRepetidoException;
-import uniandes.dpoo.hamburguesas.excepciones.NoHayPedidoEnCursoException;
-import uniandes.dpoo.hamburguesas.excepciones.ProductoFaltanteException;
-import uniandes.dpoo.hamburguesas.excepciones.ProductoRepetidoException;
-import uniandes.dpoo.hamburguesas.excepciones.YaHayUnPedidoEnCursoException;
-
 import uniandes.dpoo.hamburguesas.mundo.Restaurante;
 
 public class RestauranteTest {
