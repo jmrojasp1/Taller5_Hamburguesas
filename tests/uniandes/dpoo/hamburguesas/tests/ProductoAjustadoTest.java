@@ -41,5 +41,23 @@ public class ProductoAjustadoTest {
 		productoAjustado1.agregarIngrediente(queso);
 		assertEquals(21000,productoAjustado1.getPrecio(),"El precio debería ser 21000 después de añadir ingredientes adicionales.");
 	}
+    
+    @Test
+    void testGenerarTextoFactura() {
+       
+        Ingrediente queso = new Ingrediente("Queso", 3000);
+        Ingrediente tomate = new Ingrediente("Tomate", 500);
+        productoAjustado1.agregarIngrediente(queso);
+        productoAjustado1.eliminarIngrediente(tomate);
+
+        
+        String textoEsperado = "BigMac\n" +
+                               "    +Queso                3000\n" +
+                               "    -Tomate\n" +
+                               "            21000\n";
+
+        
+        assertEquals(textoEsperado, productoAjustado1.generarTextoFactura(), "El texto de la factura no es el esperado.");
+    }
 
 }

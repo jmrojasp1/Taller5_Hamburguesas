@@ -95,7 +95,7 @@ public class Pedido
      * Retorna el precio de los productos del pedido
      * @return La sumatoria de los precios de los productos
      */
-    private int getPrecioNetoPedido( )
+    public int getPrecioNetoPedido( )
     {
         int valor = 0;
         for( Producto item : productos )
@@ -109,7 +109,7 @@ public class Pedido
      * Retorna el valor del IVA del producto, que corresponde al 19% del precio neto
      * @return
      */
-    private int getPrecioIVAPedido( )
+    public int getPrecioIVAPedido( )
     {
         return ( int ) ( getPrecioNetoPedido( ) * IVA );
     }
@@ -128,26 +128,26 @@ public class Pedido
      * 5. El valor total del pedido
      * @return
      */
-    public String generarTextoFactura( )
-    {
-        StringBuffer sb = new StringBuffer( );
+    public String generarTextoFactura() {
+        StringBuffer sb = new StringBuffer();
 
-        sb.append( "Cliente: " + nombreCliente + "\n" );
-        sb.append( "Dirección: " + direccionCliente + "\n" );
-        sb.append( "----------------\n" );
+        sb.append("Cliente: " + nombreCliente + "\n");
+        sb.append("Dirección: " + direccionCliente + "\n");
+        sb.append("----------------\n");
 
-        for( Producto item : productos )
-        {
-            sb.append( item.generarTextoFactura( ) );
+        for (Producto item : productos) {
+            sb.append("Producto: " + item.getNombre() + "\n");   
+            sb.append("Precio: " + item.getPrecio() + "\n");    
         }
 
-        sb.append( "----------------\n" );
-        sb.append( "Precio Neto:  " + getPrecioNetoPedido( ) + "\n" );
-        sb.append( "IVA:          " + getPrecioIVAPedido( ) + "\n" );
-        sb.append( "Precio Total: " + getPrecioTotalPedido( ) + "\n" );
+        sb.append("----------------\n");
+        sb.append("Precio Neto:  " + getPrecioNetoPedido() + "\n");
+        sb.append("IVA:          " + getPrecioIVAPedido() + "\n");
+        sb.append("Precio Total: " + getPrecioTotalPedido() + "\n");
 
-        return sb.toString( );
+        return sb.toString();
     }
+
 
     /**
      * Guarda la factura del pedido en el archivo indicado

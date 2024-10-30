@@ -53,15 +53,16 @@ public class ProductoAjustado implements Producto
      }
     
     public void agregarIngrediente(Ingrediente ingrediente) {
-    	if (!eliminados.contains(ingrediente)) {
-    		agregados.add(ingrediente);
-    	}
+        if (!eliminados.contains(ingrediente)) {
+            agregados.add(ingrediente);
+        }
     }
-    
+
     public void eliminarIngrediente(Ingrediente ingrediente) {
-    	if (!agregados.contains(ingrediente)) {
-    		agregados.add(ingrediente);
-    	}
+        
+        if (!agregados.contains(ingrediente) && !eliminados.contains(ingrediente)) {
+            eliminados.add(ingrediente);
+        }
     }
 
     /**
@@ -70,23 +71,21 @@ public class ProductoAjustado implements Producto
      * El texto incluye el producto base, los ingredientes adicionales con su costo, los ingredientes eliminados, y el precio total
      */
     @Override
-    public String generarTextoFactura( )
-    {
-        StringBuffer sb = new StringBuffer( );
-        sb.append( productoBase );
-        for( Ingrediente ing : agregados )
-        {
-            sb.append( "    +" + ing.getNombre( ) );
-            sb.append( "                " + ing.getCostoAdicional( ) );
-        }
-        for( Ingrediente ing : eliminados )
-        {
-            sb.append( "    -" + ing.getNombre( ) );
+    public String generarTextoFactura() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(productoBase.getNombre()).append("\n");
+
+        for (Ingrediente ing : agregados) {
+            sb.append("    +").append(ing.getNombre()).append("                ").append(ing.getCostoAdicional()).append("\n");
         }
 
-        sb.append( "            " + getPrecio( ) + "\n" );
+        for (Ingrediente ing : eliminados) {
+            sb.append("    -").append(ing.getNombre()).append("\n");
+        }
 
-        return sb.toString( );
+        sb.append("            ").append(getPrecio()).append("\n");
+
+        return sb.toString();
     }
 
 }

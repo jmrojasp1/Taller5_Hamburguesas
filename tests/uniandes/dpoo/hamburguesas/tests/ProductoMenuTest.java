@@ -16,7 +16,7 @@ public class ProductoMenuTest {
     @BeforeEach
     void setUp( ) throws Exception
     {
-        productoMenu1 = new ProductoMenu( "BigMac", 18000 );
+        productoMenu1 = new ProductoMenu( "BigMac", 20000 );
     }
 
     @AfterEach
@@ -33,7 +33,14 @@ public class ProductoMenuTest {
     @Test
     void testPrecio( )
     {
-        assertEquals( 18000, productoMenu1.getPrecio( ), "El costo del producto no es el esperado." );
+        assertEquals( 20000, productoMenu1.getPrecio( ), "El costo del producto no es el esperado." );
+    }
+    
+    @Test
+    void testGenerarTextoFactura() {
+        String textoEsperado = "BigMac\n" +
+                               "            20000\n";
+        assertEquals(textoEsperado, productoMenu1.generarTextoFactura(), "El texto de la factura no es el esperado.");
     }
 
 }

@@ -41,4 +41,13 @@ public class ComboTest {
         int precioEsperado = (int) ((5000 + 3000) * (1 - 0.07));  
         assertEquals(precioEsperado, combo.getPrecio(), "El precio del combo con descuento no es el esperado.");
     }
+    
+    @Test
+    void testGenerarTextoFactura() {
+        String textoEsperado = "Combo Combo BigMac\n" +
+                               " Descuento: 0.07\n" +
+                               "            " + combo.getPrecio() + "\n";
+
+        assertEquals(textoEsperado, combo.generarTextoFactura(), "El texto de la factura no es el esperado.");
+    }
 }
