@@ -6,5 +6,10 @@ package uniandes.dpoo.hamburguesas.excepciones;
 @SuppressWarnings("serial")
 public class HamburguesaException extends Exception
 {
+	@Override
+    public String getMessage( )
+    {
+        return "No existe esta hamburguesa";
+    }
 
 }
